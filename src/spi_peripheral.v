@@ -17,7 +17,7 @@ module spi_peripheral #(
     reg COPI_sync;
 
     //sync signals
-    std_synchronizer spi_sync_inst[3](
+    std_synchronizer[3] spi_sync_inst(
         .clk(clk),
         .rst_n(rst_n),
         .d_in({nCS,SCLK,COPI}),
