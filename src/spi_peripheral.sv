@@ -42,7 +42,7 @@ module spi_peripheral #(
     logic SCLK_posedge, SCLK_negedge;
 
     edge_detector #(
-        .EDGE_TYPE(1)
+        .EDGE_TYPE(0)
     ) nCS_posedge_0 (
         .clk     (clk),
         .din     (nCS_sync),
@@ -50,7 +50,7 @@ module spi_peripheral #(
         .din_edge(nCS_posedge)
     );
     edge_detector #(
-        .EDGE_TYPE(1)
+        .EDGE_TYPE(0)
     ) SCLK_posedge_0 (
         .clk     (clk),
         .din     (SCLK_sync),
@@ -59,7 +59,7 @@ module spi_peripheral #(
     );
 
     edge_detector #(
-        .EDGE_TYPE(0)
+        .EDGE_TYPE(1)
     ) nCS_negedge_0 (
         .clk     (clk),
         .din     (nCS_sync),
@@ -84,11 +84,10 @@ module spi_peripheral #(
             if (SCLK_posedge) begin
                 //shift
                 counter <= counter + 1;
-                frame <= (frame << 1) & {15'b1,COPI_sync};
+                frame <= (frame << 1) | {15'b0,COPI_sync};
 
                 if (counter == FRAME_WIDTH) begin
                     counter <= 0;
-                    frame <= 0;
                 end
             end
         end else begin
