@@ -53,7 +53,7 @@ module spi_peripheral #(
         .EDGE_TYPE(1)
     ) SCLK_posedge_0 (
         .clk     (clk),
-        .din     (nCS_sync),
+        .din     (SCLK_sync),
         .rst_n   (rst_n),
         .din_edge(SCLK_posedge)
     );
