@@ -4,9 +4,11 @@ author: "Your Name"
 description: "SPI-controlled PWM peripheral for Tiny Tapeout."  
 top_module: "tt_um_uwasic_onboarding_david"  # Match your top module name  
 source_files:  
-  - "spi peripheral"
+  - spi_peripheral.sv
   - pwm_peripheral.v  
   - project.v
+  - sync.v
+  - edge_detector.sv
 
 # NOT REQUIRED
 pinout:
