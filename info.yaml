@@ -18,7 +18,7 @@ project:
     - spi_peripheral.sv
     - pwm_peripheral.v  
     - project.v
-    - sync.v
+    - sync.sv
     - edge_detector.sv
 
 # NOT REQUIRED
