@@ -7,7 +7,7 @@ module edge_detector #(parameter EDGE_TYPE = 0)(
     //EDGE_TYPE = 0 -> falling
     //EDGE_TYPE = 1 -> risiing
     logic din_delayed;
-    always_ff @(posedge clk) begin
+    always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             din_delayed <= 0;
         end else begin

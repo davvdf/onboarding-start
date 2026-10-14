@@ -1,6 +1,4 @@
-module spi_peripheral #(
-    parameter DATA_WIDTH = 16
-) (
+module spi_peripheral (
     input logic clk,
     input logic rst_n,
     input logic SCLK,
@@ -38,8 +36,8 @@ module spi_peripheral #(
     );
 
 
-    logic nCS_posedge, nCS_negedge;
-    logic SCLK_posedge, SCLK_negedge;
+    logic nCS_posedge;
+    logic SCLK_posedge;
 
     edge_detector #(
         .EDGE_TYPE(0)
@@ -118,6 +116,7 @@ module spi_peripheral #(
             // Transaction is ready and not yet processed
             // omitted code
             //slice frame only if write bit enabled
+            /* verilator lint_off WIDTHEXPAND */
             if (frame[15] && (frame[14:8] < MAX_ADDRESS)) begin
                 case (frame[14:8]) 
                 7'h0: en_reg_out_7_0 <= frame[7:0];

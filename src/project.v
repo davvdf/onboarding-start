@@ -25,9 +25,7 @@ module tt_um_uwasic_onboarding_david (
   wire [7:0] en_reg_pwm_15_8;
   wire [7:0] pwm_duty_cycle;
 
-  spi_peripheral #(
-    .DATA_WIDTH(16)
-   ) spi_peripheral (
+  spi_peripheral spi_peripheral_inst (
     .clk            (clk),
     .rst_n          (rst_n),
     .SCLK           (ui_in[0]),
