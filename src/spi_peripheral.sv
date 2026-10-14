@@ -56,15 +56,6 @@ module spi_peripheral (
         .din_edge(SCLK_posedge)
     );
 
-    edge_detector #(
-        .EDGE_TYPE(1)
-    ) nCS_negedge_0 (
-        .clk     (clk),
-        .din     (nCS_sync),
-        .rst_n   (rst_n),
-        .din_edge(nCS_negedge)
-    );
-
     logic transaction_ready, transaction_processed;
     logic [4:0] counter;
     logic [15:0] frame;
